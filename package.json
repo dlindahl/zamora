@@ -1,0 +1,28 @@
+{
+  "name": "zamora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "module": "",
+  "jsnext:main": "",
+  "engines": {
+    "node": "7.5.0"
+  },
+  "author": "Derek Lindahl <derek.lindahl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/dlindahl/zamora/issues"
+  },
+  "contributors": [],
+  "homepage": "http://dlindahl.github.io/zamora",
+  "keywords": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlindahl/zamora.git"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}

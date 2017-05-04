@@ -36,5 +36,11 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "prettier-eslint-cli": "^3.4.2"
+  },
+  "dependencies": {
+    "color": "^1.0.3",
+    "lodash.minby": "^4.6.0",
+    "lodash.pick": "^4.4.0",
+    "modularscale": "^2.0.1"
   }
 }

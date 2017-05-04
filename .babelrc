@@ -1,0 +1,82 @@
+{
+  "env": {
+    "commonjs": {
+      "comments": false,
+      "plugins": [
+        [
+          "transform-object-rest-spread",
+          {
+            "useBuiltIns": true
+          }
+        ]
+      ],
+      "presets": [
+        "es2015"
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "transform-object-rest-spread",
+          {
+            "useBuiltIns": true
+          }
+        ],
+        [
+          "transform-runtime",
+          {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": false
+          }
+        ]
+      ],
+      "presets": [
+        "es2015"
+      ]
+    },
+    "es": {
+      "plugins": [
+        [
+          "transform-object-rest-spread",
+          {
+            "useBuiltIns": true
+          }
+        ],
+        "transform-runtime"
+      ],
+      "presets": [
+        "es2015-rollup"
+      ]
+    },
+    "production": {
+      "comments": false,
+      "plugins": [
+        "transform-class-properties",
+        [
+          "transform-object-rest-spread",
+          {
+            "useBuiltIns": true
+          }
+        ],
+        [
+          "transform-runtime",
+          {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": false
+          }
+        ]
+      ],
+      "presets": [
+        "es2015"
+      ]
+    },
+    "test": {
+      "comments": false,
+      "presets": [
+        "es2015"
+      ]
+    }
+  }
+}

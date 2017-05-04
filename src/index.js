@@ -1,7 +1,6 @@
 import Color from 'color'
-import minBy from 'lodash.minby'
+import { lowerLuminosity, raiseLuminosity } from './luminosity'
 import ms from 'modularscale'
-import pick from 'lodash.pick'
 
 /*
  * Based on the blog post:
@@ -15,48 +14,7 @@ import pick from 'lodash.pick'
  * the amounts between those steps.
  */
 
-// Max Hue points in 30-degree increments
-const HUES = {
-  /* eslint-disable sort-keys */
-  red: 0,
-  yellow: 60,
-  green: 120,
-  cyan: 180,
-  blue: 140,
-  magenta: 300
-  /* eslint-enable sort-keys */
-}
-// Hues to shift towards to decrease perceived luminance
-const DARK_HUES = ['red', 'green', 'blue']
-// Hues to shift towards to increase perceived luminance
-const LIGHT_HUES = ['yellow', 'cyan', 'magenta']
-
-// Return the nearest max hue point for a given hue value
-function nearestHue (hue, variations) {
-  const nearest = minBy(Object.keys(pick(HUES, ...variations)), (h) =>
-    Math.abs(hue - HUES[h])
-  )
-  return HUES[nearest]
-}
-
-// Shift perceived luminance towards or away from a specific max hue value
-function shiftLuminosity (hue, shiftAmount, huePoints) {
-  const hueShift = nearestHue(hue, huePoints)
-  if (hueShift > hue) {
-    return hue - shiftAmount
-  }
-  return hue + shiftAmount
-}
-
-function lowerLuminosity (hue, raiseAmount) {
-  return shiftLuminosity(hue, raiseAmount, DARK_HUES)
-}
-
-function raiseLuminosity (hue, raiseAmount) {
-  return shiftLuminosity(hue, raiseAmount, LIGHT_HUES)
-}
-
-export function darken (baseColor, steps, scale) {
+export function darken (baseColor, { scale, steps }) {
   if (!baseColor) {
     return baseColor
   }
@@ -78,24 +36,24 @@ export function darken (baseColor, steps, scale) {
  * Convenience method for encapsulating the logic for generating a color
  * derivative used when an element is focused by the user
  */
-export function focusColor (baseColor, steps = 5, scale) {
-  return lighten(baseColor, steps, scale)
+export function focusColor (baseColor, { scale, steps = 5 }) {
+  return lighten(baseColor, { scale, steps })
 }
 
 /*
  * Convenience method for encapsulating the logic for generating a color
  * derivative used when an element is hovered over by the user
  */
-export function hoverColor (baseColor, steps = 5, scale) {
-  return darken(baseColor, steps, scale)
+export function hoverColor (baseColor, { scale, steps = 5 }) {
+  return darken(baseColor, { scale, steps })
 }
 
-export function lighten (baseColor, steps) {
+export function lighten (baseColor, { scale, steps }) {
   if (!baseColor) {
     return baseColor
   }
   const c = Color(baseColor)
-  const delta = ms(steps) / 100
+  const delta = ms(steps, scale) / 100
   const newSaturation = c.saturationv() - c.saturationv() * delta
   const newValue = c.value() + c.value() * delta
 

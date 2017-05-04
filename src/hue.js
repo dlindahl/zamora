@@ -8,7 +8,7 @@ const HUES = {
   yellow: 60,
   green: 120,
   cyan: 180,
-  blue: 140,
+  blue: 240,
   magenta: 300
   /* eslint-enable sort-keys */
 }
@@ -19,8 +19,12 @@ export const LIGHT_HUES = ['yellow', 'cyan', 'magenta']
 
 // Return the nearest max hue point for a given hue value
 export function nearestHue (hue, variations) {
-  const nearest = minBy(Object.keys(pick(HUES, ...variations)), (h) =>
-    Math.abs(hue - HUES[h])
-  )
+  const nearest = minBy(Object.keys(pick(HUES, ...variations)), (h) => {
+    const phi = Math.abs(hue - HUES[h]) % 360
+    if (phi > 180) {
+      return 360 - phi
+    }
+    return phi
+  })
   return HUES[nearest]
 }

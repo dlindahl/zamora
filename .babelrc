@@ -73,7 +73,14 @@
       ]
     },
     "test": {
-      "comments": false,
+      "plugins": [
+        [
+          "transform-object-rest-spread",
+          {
+            "useBuiltIns": true
+          }
+        ]
+      ],
       "presets": [
         "es2015"
       ]

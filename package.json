@@ -31,7 +31,8 @@
     "build:es": "npm run clean:es && cross-env NODE_ENV=production cross-env BABEL_ENV=es babel src --out-dir dist/es --ignore *.test.js",
     "clean:commonjs": "rimraf dist/commonjs",
     "clean:es": "rimraf dist/es",
-    "lint": "prettier-eslint --write \"./src/**/*.js\" && eslint --ignore-path .gitignore --fix ."
+    "lint": "prettier-eslint --write \"./src/**/*.js\" && eslint --ignore-path .gitignore --fix .",
+    "test": "NODE_ENV=test jest"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -52,6 +53,7 @@
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "jest": "^19.0.2",
     "npm-run-all": "^4.0.2",
     "prettier-eslint-cli": "^3.4.2",
     "rimraf": "^2.6.1"
@@ -61,5 +63,27 @@
     "lodash.minby": "^4.6.0",
     "lodash.pick": "^4.4.0",
     "modularscale": "^2.0.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "roots": [
+      "src"
+    ],
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+    ],
+    "testRegex": "(.*|\\.(test|spec))\\.(test.js|json|node)$",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "^(?!.*\\.(js|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.js$"
+    ]
   }
 }

@@ -1,9 +1,10 @@
-# zamora
+# Zamora
 
 > Real World Color Modifications
 
-Based on the blog post: https://medium.com/@erikdkennedy/color-in-ui-design-a-practical-framework-e18cacd97f9e
+**NOTE** This is still a work in progress
 
+Based on the blog post: https://medium.com/@erikdkennedy/color-in-ui-design-a-practical-framework-e18cacd97f9e
 
 | CSS Color Name | Perceived Luminosity |
 | :------------- | :------------------- |

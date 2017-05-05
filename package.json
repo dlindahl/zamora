@@ -2,9 +2,9 @@
   "name": "zamora",
   "version": "1.0.0",
   "description": "",
-  "main": "",
-  "module": "",
-  "jsnext:main": "",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
   "engines": {
     "node": "7.5.0"
   },

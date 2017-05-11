@@ -1,6 +1,6 @@
 {
   "name": "zamora",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Real World Color Modifications",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
